@@ -1,12 +1,11 @@
-name: Django CI
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+name : CI Workflow
+on :
+    push :
+        branches :
+            - "ghita-branch"
+    pull_request :
+        branches :
+            - "main"
 
 jobs:
   test:
@@ -29,12 +28,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses : actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: 3.x
 
       - name: Install dependencies
         run: |
@@ -43,10 +42,11 @@ jobs:
 
       - name: Run Tests
         env:
-          POSTGRES_DB: test_db
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ELibraryDB
+          POSTGRES_USER: ghita
+          POSTGRES_PASSWORD: ghita
           POSTGRES_HOST: localhost
           POSTGRES_PORT: 5432
         run: |
-          python manage.py test
+          python manage.py test user_service.tests 
+

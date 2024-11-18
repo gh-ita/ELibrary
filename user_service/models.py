@@ -22,3 +22,10 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username  # Return the username when the user object is printed
+    
+    
+    
+    
+    
+    
+    
