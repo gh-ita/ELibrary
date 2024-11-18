@@ -24,5 +24,4 @@ jobs :
              
             - name: Run tests
               run: |
-               cd UserManagementService
-               python manage.py test user_service.tests
+               python manage.py test user_service.tests 
