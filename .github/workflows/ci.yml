@@ -1,0 +1,28 @@
+name : CI Workflow
+on :
+    push :
+        branches :
+            - "ghita-branch"
+    pull_request :
+        branches :
+            - "main"
+
+jobs :
+    build :
+        runs-on : ubuntu-latest
+        steps :
+            - name: Checks out code
+              uses: actions/checkout@v2
+
+            - name: Checks out python
+              uses : actions/setup-python@v2
+              with : 
+                       python-version: 3.x
+            
+            - name: Install dependencies 
+              run: pip install -r requirements.txt
+             
+            - name: Run tests
+              run: |
+               cd UserManagementService
+               python manage.py test user_service.tests
