@@ -16,7 +16,7 @@ class UserService:
                 first_name=first_name,
                 last_name=last_name
             )
-            return f'{user.username} user was created'
+            return user
         except Exception as e:
             # Handle any exceptions and raise a validation error if needed
             raise ValidationError(f"Error registering user: {str(e)}")
